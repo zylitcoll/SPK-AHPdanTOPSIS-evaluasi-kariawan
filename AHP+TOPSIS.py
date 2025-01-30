@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 from scipy.spatial.distance import euclidean
+import seaborn as sns
 
 # Mengatur agar pandas menampilkan seluruh baris
 pd.set_option('display.max_rows', None)
@@ -62,6 +63,10 @@ df['Experience_Level'] = pd.cut(df['Years_At_Company'], bins=bins, labels=labels
 output_folder = "grafix"
 os.makedirs(output_folder, exist_ok=True)
 
+# Gunakan palet warna yang lebih menarik
+colors = sns.color_palette("viridis", 3)
+color_map = {'Junior': colors[0], 'Mid-Level': colors[1], 'Senior': colors[2]}
+
 # Pisahkan analisis berdasarkan Departemen, Posisi, dan Level Pengalaman
 ranked_results = []
 for (dept, job, exp_level), group in df.groupby(['Department', 'Job_Title', 'Experience_Level'], observed=True):
@@ -71,19 +76,17 @@ for (dept, job, exp_level), group in df.groupby(['Department', 'Job_Title', 'Exp
     group = group.sort_values(by='TOPSIS_Score', ascending=False)
     ranked_results.append(group)
     
-    # Ambil  karyawan terbaik per kategori
+    # Ambil karyawan terbaik per kategori
     top = group.head(50)
     
-    # Warna berdasarkan level pengalaman
-    colors = {'Junior': 'red', 'Mid-Level': 'blue', 'Senior': 'green'}
     plt.figure(figsize=(12, 8))
     y_positions = range(len(top))
-    plt.barh(y_positions, top['TOPSIS_Score'], color=colors[exp_level], align='center')
+    plt.barh(y_positions, top['TOPSIS_Score'], color=color_map[exp_level], align='center')
     plt.yticks(y_positions, top['Employee_ID'].astype(str))
     
     plt.xlabel("TOPSIS Score")
     plt.ylabel("Employee ID")
-    plt.title(f"Top 100 Employees - {dept} - {job} - {exp_level}")
+    plt.title(f"Top 50 Employees - {dept} - {job} - {exp_level}")
     plt.gca().invert_yaxis()
     plt.tight_layout()
     
