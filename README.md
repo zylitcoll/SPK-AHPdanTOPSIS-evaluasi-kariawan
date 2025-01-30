@@ -84,10 +84,15 @@ venv\Scripts\activate     # Windows
 ### **4. Instal Dependensi**
 
 Dependensi:
-numpy → Untuk perhitungan matriks dan vektor dalam AHP & TOPSIS.
-pandas → Untuk membaca dan mengelola dataset CSV.
-matplotlib → Untuk membuat dan menyimpan grafik PNG.
-scipy → Untuk menghitung jarak Euclidean dalam metode TOPSIS.
+*numpy → Untuk perhitungan matriks dan vektor dalam AHP & TOPSIS.
+
+*pandas → Untuk membaca dan mengelola dataset CSV.
+
+*matplotlib → Untuk membuat dan menyimpan grafik PNG.
+
+*scipy → Untuk menghitung jarak Euclidean dalam metode TOPSIS.
+
+*seaborn → Untuk warna agar menrik.
 
 Lalu instal dengan:
 
