@@ -65,11 +65,9 @@ Jika belum terpasang, instal Python terlebih dahulu menggunakan:
 Jika file ini sudah diunggah ke GitHub, clone repository-nya:
 
 ```bash
-git clone https://github.com/username/repo_name.git
-cd repo_name
+git clone https://github.com/zylitcoll/SPK-AHPdanTOPSIS-evaluasi-kariawan.git
+cd SPK-AHPdanTOPSIS-evaluasi-kariawan
 ```
-
-Ganti `username` dan `repo_name` sesuai dengan repositorimu.
 
 ### **3. Buat dan Aktifkan Virtual Environment**
 
